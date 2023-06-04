@@ -13,7 +13,6 @@ public class P08_IncreaseMinionsAge_v02 {
     private static final String UPDATE_MINIONS_NAMES_AND_AGE_BY_ID =
         "UPDATE minions AS m SET m.name = LOWER(m.name), m.age = m.age + 1 WHERE m.id IN (%s)";
     private static final String GET_ALL_MINIONS = "SELECT m.id, m.name, m.age FROM minions AS m";
-    private static final String TEXT_TO_REPLACE = "(?)";
 
     public static void main(String[] args) throws SQLException {
 
