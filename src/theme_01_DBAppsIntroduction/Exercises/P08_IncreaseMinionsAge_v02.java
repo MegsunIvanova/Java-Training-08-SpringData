@@ -1,14 +1,17 @@
 package theme_01_DBAppsIntroduction.Exercises;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class P08_IncreaseMinionsAge {
+public class P08_IncreaseMinionsAge_v02 {
 
     private static final String UPDATE_MINIONS_NAMES_AND_AGE_BY_ID =
-        "UPDATE minions AS m SET m.name = LOWER(m.name), m.age = m.age + 1 WHERE m.id IN (?)";
+        "UPDATE minions AS m SET m.name = LOWER(m.name), m.age = m.age + 1 WHERE m.id IN (%s)";
     private static final String GET_ALL_MINIONS = "SELECT m.id, m.name, m.age FROM minions AS m";
     private static final String TEXT_TO_REPLACE = "(?)";
 
@@ -16,14 +19,26 @@ public class P08_IncreaseMinionsAge {
 
         final Connection connection = Utils.getSQLConnection();
 
-        final String minionsIds = Arrays.stream(new Scanner(System.in)
+        final int [] minionsIds = Arrays.stream(new Scanner(System.in)
                 .nextLine()
                 .split("\\s+"))
-                .collect(Collectors.joining(",", "(", ")"));
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
+        StringBuilder paramsNumber = new StringBuilder();
+        for (int minionId : minionsIds) {
+            paramsNumber.append("?,");
+        }
+
+        paramsNumber.deleteCharAt(paramsNumber.length()-1);
+
+       final String updateQuery = String.format(UPDATE_MINIONS_NAMES_AND_AGE_BY_ID, paramsNumber);
 
         final PreparedStatement updateMinionsStatement =
-                connection.prepareStatement(UPDATE_MINIONS_NAMES_AND_AGE_BY_ID.replace(TEXT_TO_REPLACE, minionsIds));
+                connection.prepareStatement(updateQuery);
+        for (int i = 1; i <= minionsIds.length ; i++) {
+            updateMinionsStatement.setInt(i, minionsIds[i-1]);
+        }
         updateMinionsStatement.executeUpdate();
 
 
