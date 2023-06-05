@@ -3,8 +3,8 @@
 
 Course Objectives:
 
-Connecting to local DB instance;
-ORM, Hibernate and Spring Data;
-Code-First implementations;
-Programming Patterns;
-Working with data in other formats (XML, JSON).
+- Connecting to local DB instance;
+- ORM, Hibernate and Spring Data;
+- Code-First implementations;
+- Programming Patterns;
+- Working with data in other formats (XML, JSON).
