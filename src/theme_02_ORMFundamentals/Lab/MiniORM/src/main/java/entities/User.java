@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class User {
 
     @Id
+    @Column(name = "id")
     private long id;
 
     @Column(name = "user_name")
@@ -61,13 +62,4 @@ public class User {
         this.registration = registration;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", age=" + age +
-                ", registration=" + registration +
-                '}';
-    }
-}
+   }

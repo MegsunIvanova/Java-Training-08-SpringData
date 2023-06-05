@@ -1,46 +1,46 @@
-import entities.Student;
 import entities.User;
-import orm.Connector;
 import orm.EntityManager;
 
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) throws SQLException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, NoSuchFieldException {
-        Connector.createConnection("root", "123456", "soft_uni");
-        Connection connection = Connector.getConnection();
+    public static void main(String[] args)
+            throws SQLException, IllegalAccessException, NoSuchFieldException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 
-        EntityManager<User> userManager = new EntityManager<User>(connection);
-//        User user = new User("First", 28, LocalDate.now());
-//        userManager.persist(user);
+        final EntityManager<User> userEntityManager = new EntityManager<>();
 
-        EntityManager<Student> studentManager = new EntityManager<>(connection);
-//        Student student = new Student("name");
-//        studentManager.persist(student);
+//        userEntityManager.doCreate(User.class);
 
-//        User first = userManager.findFirst(User.class);
+//        User user = new User();
+//        user.setId(1L);
 
-//        System.out.println(first.getId() + " " + first.getUsername());
+//        userEntityManager.doAlter(User.class);
+//        User user1 = new User("Pesho", 25, LocalDate.now());
+//        User user2 = new User("Gosho", 30, LocalDate.now());
+//
+//        userEntityManager.persist(user1);
+//        userEntityManager.persist(user2);
 
-//        Student first1 = studentManager.findFirst(Student.class, "name = 'name2'");
+//        user.setId(1);
+//        user.setAge(30);
+//        user.setUsername("Gosho");
+//
+//        userEntityManager.persist(user);
+//
+        User firstFirstWithArgument = userEntityManager.findFirst(User.class, "age >= 30");
+//        User firstFirstWithoutArgument = userEntityManager.findFirst(User.class);
+        Iterable<User> getAllWithArgument = userEntityManager.find(User.class, "age >= 30");
+//        Iterable<User> getAll = userEntityManager.find(User.class);
 
-//        System.out.println(first1.getId() + " " + first1.getName());
+//        EntityManager<Account> accountEntityManager = new EntityManager<>();
 
-//        userManager
-//                .find(User.class, "age > 18 AND registration_date > '2022-06-06'")
-//                .forEach(user -> System.out.println(user.toString()));
+//        accountEntityManager.doCreate(Account.class);
+//        accountEntityManager.doAlter(Account.class);
 
-        User user2 = new User("Second", 30, LocalDate.now());
-//        userManager.persist(user2);
+//        Account account = new Account("Nikolai", LocalDate.now(), 111);
 
-        user2.setId(8);
-        user2.setUsername("SecondChanged");
-        user2.setAge(40);
-        user2.setRegistration(LocalDate.now());
 
-        userManager.persist(user2);
+        System.out.println();
     }
 }
