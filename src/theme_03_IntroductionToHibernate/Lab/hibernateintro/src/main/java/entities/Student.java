@@ -1,16 +1,15 @@
 package entities;
 
-import orm.annotations.Column;
-import orm.annotations.Entity;
-import orm.annotations.Id;
+import jakarta.persistence.*;
 
-@Entity(name = "students")
+@Entity
+@Table(name = "students")
 public class Student {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "first_name")
     private String name;
 
     public Student() {
