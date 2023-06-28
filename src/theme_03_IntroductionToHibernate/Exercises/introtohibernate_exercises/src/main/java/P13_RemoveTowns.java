@@ -28,7 +28,7 @@ public class P13_RemoveTowns {
             entityManager.remove(address);
         }
 
-        entityManager.remove(town, town.getId());
+        entityManager.remove(town);
 
         entityManager.getTransaction().commit();
 
