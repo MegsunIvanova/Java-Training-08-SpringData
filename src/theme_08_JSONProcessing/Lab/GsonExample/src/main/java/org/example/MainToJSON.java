@@ -16,7 +16,6 @@ public class MainToJSON {
         Gson gson = gsonBuilder
                 .excludeFieldsWithoutExposeAnnotation()
                 .serializeNulls()
-                .setDateFormat("dd-MM-yyyy")
                 .setPrettyPrinting()
                 .create();
 

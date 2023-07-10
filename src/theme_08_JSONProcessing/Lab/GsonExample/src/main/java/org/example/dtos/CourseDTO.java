@@ -2,6 +2,9 @@ package org.example.dtos;
 
 import com.google.gson.annotations.Expose;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class CourseDTO {
     @Expose
     private String name;
@@ -9,7 +12,17 @@ public class CourseDTO {
     @Expose
     private int lengthInWeeks;
 
-      public CourseDTO(String name, int lengthInWeeks) {
+    @Expose
+    private Date createdAt;
+
+    public CourseDTO(String name, int lengthInWeeks, Date createdAt) {
+        this.name = name;
+        this.lengthInWeeks = lengthInWeeks;
+        this.createdAt = createdAt;
+    }
+
+
+    public CourseDTO(String name, int lengthInWeeks) {
         this.name = name;
         this.lengthInWeeks = lengthInWeeks;
     }
@@ -19,6 +32,7 @@ public class CourseDTO {
         return "CourseDTO {" +
                 "name='" + name + '\'' +
                 ", lengthInWeeks=" + lengthInWeeks +
+                ", createdAt=" + createdAt +
                 '}';
     }
 }
