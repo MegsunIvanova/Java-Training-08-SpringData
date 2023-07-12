@@ -1,0 +1,127 @@
+package bg.softuni.games_store.entities.games;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Objects;
+
+@Entity
+@Table(name = "games")
+public class Game {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(name = "trailer")
+    private String trailer;
+    @Column(name = "thumbnail_url", nullable = false)
+    private String thumbnailUrl;
+
+    private Float size;
+
+    @Column(nullable = false)
+    private BigDecimal price;
+
+    private String description;
+
+    @Column(name = "release_date", nullable = false)
+    private LocalDate releaseDate;
+
+    public Game() {
+    }
+
+    public Game(String title, String trailer,
+                String thumbnailUrl, Float size,
+                BigDecimal price, String description,
+                LocalDate releaseDate) {
+        this.title = title;
+        this.trailer = trailer;
+        this.thumbnailUrl = thumbnailUrl;
+        this.size = size;
+        this.price = price;
+        this.description = description;
+        this.releaseDate = releaseDate;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public Float getSize() {
+        return size;
+    }
+
+    public void setSize(Float size) {
+        this.size = size;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Game game)) return false;
+        return Objects.equals(id, game.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+}
