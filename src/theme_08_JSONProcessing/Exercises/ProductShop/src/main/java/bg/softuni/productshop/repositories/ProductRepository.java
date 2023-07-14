@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    @Query("SELECT new bg.softuni.productshop.productshop.entities.products.ProductWithoutBuyerDTO(" +
+    @Query("SELECT new bg.softuni.productshop.entities.products.ProductWithoutBuyerDTO(" +
             "p.name, p.price, p.seller.firstName, p.seller.lastName) " +
             "FROM Product p " +
             "WHERE  p.price > :rangeStart AND p.price < :rangeEnd AND p.buyer IS NULL " +
@@ -21,7 +21,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<ProductWithoutBuyerDTO> findAllByPriceBetweenAndBuyerIsNullOrderByPriceAsc (
             BigDecimal rangeStart, BigDecimal rangeEnd);
 
-    @Query("SELECT new bg.softuni.productshop.productshop.entities.categories.CategoryStatsDTO(" +
+    @Query("SELECT new bg.softuni.productshop.entities.categories.CategoryStatsDTO(" +
             "c.name, COUNT(p), AVG(p.price), SUM(p.price)) " +
             "FROM Product p " +
             "JOIN p.categories c " +

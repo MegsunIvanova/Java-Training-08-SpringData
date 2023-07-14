@@ -1,6 +1,5 @@
 package bg.softuni.productshop.entities.products;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class ProductWithNameAndPriceDTO {

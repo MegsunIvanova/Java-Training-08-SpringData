@@ -1,7 +1,5 @@
 package bg.softuni.productshop.entities.products;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.math.BigDecimal;
 
 public class ProductWithoutBuyerDTO {
