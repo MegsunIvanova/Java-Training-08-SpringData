@@ -21,4 +21,8 @@ public interface ShampooService {
     List<Shampoo> findAllWithIngredients(List<String> ingredientsNames);
 
     List<Shampoo> findByIngredientCountLessThan(int ingredientsNumber);
+
+    void save(Shampoo shampoo);
+
+    void updatePriceForId(BigDecimal price, long id);
 }

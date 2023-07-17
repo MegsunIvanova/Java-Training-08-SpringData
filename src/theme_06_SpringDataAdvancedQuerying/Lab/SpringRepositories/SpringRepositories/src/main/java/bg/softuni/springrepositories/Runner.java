@@ -61,9 +61,16 @@ public class Runner implements CommandLineRunner {
 //        System.out.println("Updated: " + updated);
 
         //11. Update Ingredients by Names
-        int updated = ingredientService.updatePriceByName(List.of("Berry", "Mineral-Collagen"), BigDecimal.valueOf(10));
-        System.out.println("Updated: " + updated);
+//        int updated = ingredientService.updatePriceByName(List.of("Berry", "Mineral-Collagen"), BigDecimal.valueOf(10));
+//        System.out.println("Updated: " + updated);
 
 //        result.forEach(System.out::println);
+
+        //Q/A Additional
+//        Shampoo shampoo = shampooService.findByBrand("Swiss Green Apple & Nettle").get(0);
+//        shampoo.setPrice(BigDecimal.TEN);
+//        shampooService.save(shampoo);
+
+        shampooService.updatePriceForId(BigDecimal.ONE, 1L);
     }
 }

@@ -3,6 +3,7 @@ package bg.softuni.springrepositories.services;
 import bg.softuni.springrepositories.entities.Shampoo;
 import bg.softuni.springrepositories.entities.Size;
 import bg.softuni.springrepositories.repositories.ShampooRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -54,5 +55,15 @@ public class ShampooServiceImpl implements ShampooService {
     @Override
     public List<Shampoo> findByIngredientCountLessThan(int ingredientsCount) {
         return shampooRepository.findByIngredientCountLessThan(ingredientsCount);
+    }
+
+    @Override
+    public void save(Shampoo shampoo) {
+        this.shampooRepository.save(shampoo);
+    }
+
+    @Override
+    public void updatePriceForId(BigDecimal price, long id) {
+        this.shampooRepository.updatePriceById(price, id);
     }
 }
